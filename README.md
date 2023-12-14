@@ -15,6 +15,7 @@
 ### Sur le PC
 - Télécharger le driver mysql "mysql connector 8.0.3"
 - Placer le driver dans le dossier GlassFish C:\glassfish\glassfish6\glassfish\domains\domain1\lib
+- Installer MySQL et placer le dump shop_online.sql dans une Base de Données "shop_online"
 
 ## Derniers réglages sur IntelliJ
 ### Installer les librairie suivantes :
