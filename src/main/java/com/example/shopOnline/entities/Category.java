@@ -1,10 +1,7 @@
-package com.example.tp03.entities;
+package com.example.shopOnline.entities;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "categories")

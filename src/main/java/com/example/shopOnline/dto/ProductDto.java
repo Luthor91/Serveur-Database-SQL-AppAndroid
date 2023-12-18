@@ -1,11 +1,11 @@
-package com.example.tp03.dto;
+package com.example.shopOnline.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.example.tp03.entities.Product}
+ * DTO for {@link com.example.shopOnline.entities.Product}
  */
 public class ProductDto implements Serializable {
     private final Integer id;

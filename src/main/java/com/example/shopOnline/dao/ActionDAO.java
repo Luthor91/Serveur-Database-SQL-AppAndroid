@@ -1,4 +1,4 @@
-package com.example.tp03.dao;
+package com.example.shopOnline.dao;
 
 import java.util.List;
 

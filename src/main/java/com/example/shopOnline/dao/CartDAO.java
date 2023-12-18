@@ -1,7 +1,7 @@
-package com.example.tp03.dao;
+package com.example.shopOnline.dao;
 
 
-import com.example.tp03.entities.Cart;
+import com.example.shopOnline.entities.Cart;
 import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
 

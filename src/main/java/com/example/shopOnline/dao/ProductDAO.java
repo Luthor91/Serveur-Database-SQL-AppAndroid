@@ -1,9 +1,9 @@
-package com.example.tp03.dao;
+package com.example.shopOnline.dao;
 
 
-import com.example.tp03.dto.ProductDto;
-import com.example.tp03.entities.Cart;
-import com.example.tp03.entities.Product;
+import com.example.shopOnline.dto.ProductDto;
+import com.example.shopOnline.entities.Cart;
+import com.example.shopOnline.entities.Product;
 import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
 
@@ -48,7 +48,7 @@ public class ProductDAO implements ActionDAO<Product> {
         try(Session session=HibernateUtil.getSessionFactory().openSession()) {
             SelectionQuery<ProductDto> query=
                     session.createSelectionQuery("select " +
-                            "new com.example.tp03.dto.ProductDto(" +
+                            "new com.example.shopOnline.dto.ProductDto(" +
                             "p.id," +
                             "p.productName," +
                             "p.productDescription," +

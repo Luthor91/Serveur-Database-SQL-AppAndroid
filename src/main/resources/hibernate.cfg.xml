@@ -20,12 +20,12 @@
             admin
         </property>
         <!-- List of XML mapping files -->
-        <mapping class="com.example.tp03.entities.Cart" />
-        <mapping class="com.example.tp03.entities.Category" />
-        <mapping class="com.example.tp03.entities.City" />
+        <mapping class="com.example.shopOnline.entities.Cart" />
+        <mapping class="com.example.shopOnline.entities.Category" />
+        <mapping class="com.example.shopOnline.entities.City" />
 
-        <mapping class="com.example.tp03.entities.Country" />
-        <mapping class="com.example.tp03.entities.Product" />
-        <mapping class="com.example.tp03.entities.User" />
+        <mapping class="com.example.shopOnline.entities.Country" />
+        <mapping class="com.example.shopOnline.entities.Product" />
+        <mapping class="com.example.shopOnline.entities.User" />
     </session-factory>
 </hibernate-configuration>

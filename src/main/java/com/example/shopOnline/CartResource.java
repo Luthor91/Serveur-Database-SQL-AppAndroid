@@ -1,7 +1,7 @@
-package com.example.tp03;
+package com.example.shopOnline;
 
-import com.example.tp03.dao.CartDAO;
-import com.example.tp03.entities.Cart;
+import com.example.shopOnline.dao.CartDAO;
+import com.example.shopOnline.entities.Cart;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;

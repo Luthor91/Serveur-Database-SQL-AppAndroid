@@ -1,11 +1,9 @@
-package com.example.tp03.dao;
+package com.example.shopOnline.dao;
 
 
-import com.example.tp03.dto.CategoryDto;
-import com.example.tp03.dto.ProductDto;
-import com.example.tp03.entities.Cart;
-import com.example.tp03.entities.Category;
-import com.example.tp03.entities.Product;
+import com.example.shopOnline.dto.CategoryDto;
+import com.example.shopOnline.entities.Cart;
+import com.example.shopOnline.entities.Category;
 import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
 
@@ -50,7 +48,7 @@ public class CategoryDAO implements ActionDAO<Category> {
         try(Session session=HibernateUtil.getSessionFactory().openSession()) {
             SelectionQuery<CategoryDto> query=
                     session.createSelectionQuery("select " +
-                            "new com.example.tp03.dto.CategoryDto(" +
+                            "new com.example.shopOnline.dto.CategoryDto(" +
                             "c.id," +
                             "c.title," +
                             "c.webTitle," +

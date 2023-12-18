@@ -1,4 +1,4 @@
-package com.example.tp03;
+package com.example.shopOnline;
 
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
