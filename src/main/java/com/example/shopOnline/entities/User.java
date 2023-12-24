@@ -38,6 +38,10 @@ public class User {
     @Column(name = "user_login_status", nullable = false)
     private Integer userLoginStatus;
 
+    public User() {
+
+    }
+
     public Integer getId() {
         return id;
     }

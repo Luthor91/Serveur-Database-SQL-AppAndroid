@@ -1,5 +1,8 @@
 package com.example.shopOnline.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
@@ -8,7 +11,7 @@ import java.util.Objects;
  * DTO for {@link com.example.shopOnline.entities.Product}
  */
 public class ProductDto implements Serializable {
-    private final Integer id;
+    private final Long id;
     private final String productName;
     private final String productDescription;
     private final String dossier;
@@ -19,7 +22,18 @@ public class ProductDto implements Serializable {
     private final Integer nbrImage;
     private final Instant dateAdded;
 
-    public ProductDto(Integer id, String productName, String productDescription, String dossier, Integer category, Integer inStock, Double price, String brand, Integer nbrImage, Instant dateAdded) {
+    @JsonCreator
+    public ProductDto(
+            @JsonProperty("id") Long id,
+            @JsonProperty("productName") String productName,
+            @JsonProperty("productDescription") String productDescription,
+            @JsonProperty("dossier") String dossier,
+            @JsonProperty("category") Integer category,
+            @JsonProperty("inStock") Integer inStock,
+            @JsonProperty("price") Double price,
+            @JsonProperty("brand") String brand,
+            @JsonProperty("nbrImage") Integer nbrImage,
+            @JsonProperty("dateAdded") Instant dateAdded) {
         this.id = id;
         this.productName = productName;
         this.productDescription = productDescription;
@@ -32,7 +46,21 @@ public class ProductDto implements Serializable {
         this.dateAdded = dateAdded;
     }
 
-    public Integer getId() {
+    // Ajoutez le constructeur par défaut
+    public ProductDto() {
+        this.id = null;
+        this.productName = null;
+        this.productDescription = null;
+        this.dossier = null;
+        this.category = null;
+        this.inStock = null;
+        this.price = null;
+        this.brand = null;
+        this.nbrImage = null;
+        this.dateAdded = null;
+    }
+
+    public Long getId() {
         return id;
     }
 

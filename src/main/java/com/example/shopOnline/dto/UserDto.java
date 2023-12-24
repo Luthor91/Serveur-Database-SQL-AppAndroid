@@ -9,7 +9,7 @@ import java.util.Objects;
  * DTO for {@link com.example.shopOnline.entities.User}
  */
 public class UserDto implements Serializable {
-    private final Integer id;
+    private final String id;
     private final String userName;
     private final String userEmail;
     private final String userPhone;
@@ -21,7 +21,7 @@ public class UserDto implements Serializable {
     private final City userCity;
 
 
-    public UserDto(Integer id, String userName, String userEmail, String userPhone, String userFname, String useLname, String userPassword, String userAdress, Integer userLoginStatus, City userCity) {
+    public UserDto(String id, String userName, String userEmail, String userPhone, String userFname, String useLname, String userPassword, String userAdress, Integer userLoginStatus, City userCity) {
         this.id = id;
         this.userName = userName;
         this.userEmail = userEmail;
@@ -34,7 +34,7 @@ public class UserDto implements Serializable {
         this.userCity = userCity;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 

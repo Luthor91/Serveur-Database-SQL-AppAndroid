@@ -2,7 +2,6 @@ package com.example.shopOnline.dao;
 
 
 import com.example.shopOnline.dto.ProductDto;
-import com.example.shopOnline.entities.Cart;
 import com.example.shopOnline.entities.Product;
 import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
@@ -27,7 +26,7 @@ public class ProductDAO implements ActionDAO<Product> {
 
     @Override
     public boolean deleteById(String id) {
-        return HibernateUtil.removeByID(id,Cart.class);
+        return HibernateUtil.removeByID(id,Product.class);
     }
 
     @Override
@@ -35,8 +34,7 @@ public class ProductDAO implements ActionDAO<Product> {
 
         try(Session session=HibernateUtil.getSessionFactory().openSession()) {
             SelectionQuery<Product> query=session.createSelectionQuery("from Product", Product.class);
-            List<Product> products=query.getResultList();
-            return products;
+            return query.getResultList();
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -59,8 +57,8 @@ public class ProductDAO implements ActionDAO<Product> {
                             "p.brand," +
                             "p.nbrImage," +
                             "p.dateAdded)  from Product p", ProductDto.class);
-            List<ProductDto> products=query.getResultList();
-            return products;
+
+            return query.getResultList();
         }catch (Exception ex){
             ex.printStackTrace();
         }

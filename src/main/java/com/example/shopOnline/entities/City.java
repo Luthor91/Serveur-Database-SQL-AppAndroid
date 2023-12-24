@@ -21,6 +21,10 @@ public class City {
     @Column(name = "District")
     private String district;
 
+    public City() {
+
+    }
+
     public Integer getId() {
         return id;
     }

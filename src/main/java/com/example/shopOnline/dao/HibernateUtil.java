@@ -3,60 +3,46 @@ package com.example.shopOnline.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateUtil {
     private static StandardServiceRegistry registry;
-    private static SessionFactory sessionFactory;
+    private static final SessionFactory sessionFactory = buildSessionFactory();
+
+    private static SessionFactory buildSessionFactory() {
+        try {
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                    .configure() // configurer via hibernate.cfg.xml
+                    .build();
+            return new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ExceptionInInitializerError("Erreur lors de la création de la SessionFactory : " + e);
+        }
+    }
 
     public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            try {
-                // Create registry
-                registry = new StandardServiceRegistryBuilder().
-                        configure().build();
-
-                // Create MetadataSources
-                MetadataSources sources =
-                        new MetadataSources(registry);
-
-                // Create Metadata
-                Metadata metadata = sources.getMetadataBuilder().
-                        build();
-
-                // Create SessionFactory
-                sessionFactory = metadata.
-                        getSessionFactoryBuilder().build();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                if (registry != null) {
-                    StandardServiceRegistryBuilder.destroy(registry);
-                }
-            }
-        }
         return sessionFactory;
     }
 
     public static boolean create(Object o){
         Transaction transaction=null;
         try(Session session=getSessionFactory().openSession()) {
-        transaction=session.beginTransaction();
-        session.persist(o);
-        transaction.commit();
-        return true;
-        }catch (Exception ex){
+            transaction=session.beginTransaction();
+            session.persist(o);
+            transaction.commit();
+            return true;
+        } catch (Exception ex){
             ex.printStackTrace();
             if(transaction!=null) {
-                    transaction.rollback();
+                transaction.rollback();
             }
-
         }
         return false;
     }
+
     public static boolean delete(Object o){
         Transaction transaction=null;
         try(Session session=getSessionFactory().openSession()) {
@@ -78,22 +64,22 @@ public class HibernateUtil {
         Transaction transaction=null;
         try(Session session=getSessionFactory().openSession()) {
             transaction=session.beginTransaction();
-            Object oU=session.merge(o);
+            session.merge(o); // Utilisez update au lieu de merge
             transaction.commit();
-            return oU;
-        }catch (Exception ex){
+            return true;
+        } catch (Exception ex){
             ex.printStackTrace();
             if(transaction!=null) {
                 transaction.rollback();
             }
-
         }
-        return null;
+        return false;
     }
+
+
     public static Object getByID(Object id,Class c){
         try(Session session=getSessionFactory().openSession()) {
-            Object oU=session.find(c,id);
-            return oU;
+            return session.find(c,id);
         }catch (Exception ex){
             ex.printStackTrace();
         }

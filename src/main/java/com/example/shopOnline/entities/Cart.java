@@ -38,6 +38,10 @@ public class Cart {
     @Column(name = "confirmed", nullable = false)
     private Byte confirmed;
 
+    public Cart() {
+
+    }
+
     public Integer getId() {
         return id;
     }

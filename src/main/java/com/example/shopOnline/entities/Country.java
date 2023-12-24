@@ -32,6 +32,10 @@ public class Country {
     @Column(name = "Code2")
     private String code2;
 
+    public Country() {
+
+    }
+
     public String getCode() {
         return code;
     }

@@ -1,16 +1,17 @@
 package com.example.shopOnline.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-
-import java.time.Instant;
 
 @Entity
 @Table(name = "products")
 
 public class Product {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id", nullable = false)
-    private Integer id;
+    private Long id; // Changer le type de la clé primaire en Long
 
     @Column(name = "product_name", nullable = false, length = 200)
     private String productName;
@@ -24,6 +25,8 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnoreProperties(ignoreUnknown = true,
+            value = {"id"})
     private Category category;
 
     @Column(name = "in_stock", nullable = false)
@@ -39,15 +42,17 @@ public class Product {
     private Integer nbrImage;
 
     @Column(name = "date_added")
-    private Instant dateAdded;
+    private String dateAdded;
 
-    public Integer getId() {
+    public Product() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public void setId(Long id) {  this.id = id;  }
 
     public String getProductName() {
         return productName;
@@ -113,11 +118,11 @@ public class Product {
         this.nbrImage = nbrImage;
     }
 
-    public Instant getDateAdded() {
+    public String getDateAdded() {
         return dateAdded;
     }
 
-    public void setDateAdded(Instant dateAdded) {
+    public void setDateAdded(String dateAdded) {
         this.dateAdded = dateAdded;
     }
 
